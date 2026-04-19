@@ -1,0 +1,68 @@
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch main
+# Your branch is up to date with 'origin/main'.
+#
+# Changes to be committed:
+#	new file:   .vscode/settings.json
+#	modified:   surveysnap-frontend/src/App.jsx
+#	modified:   surveysnap-frontend/src/Component/Common/Button.jsx
+#	modified:   surveysnap-frontend/src/Component/Common/Card.jsx
+#	modified:   surveysnap-frontend/src/Component/Common/InputField.jsx
+#	new file:   surveysnap-frontend/src/Component/Common/Logo.jsx
+#	modified:   surveysnap-frontend/src/Component/admin/AdminSidebar.jsx
+#	modified:   surveysnap-frontend/src/Component/layout/AdminLayout.jsx
+#	modified:   surveysnap-frontend/src/Component/layout/UserLayout.jsx
+#	modified:   surveysnap-frontend/src/Component/user/ResponseChart.jsx
+#	modified:   surveysnap-frontend/src/Component/user/SurveyCard.jsx
+#	modified:   surveysnap-frontend/src/Component/user/UserNavbar.jsx
+#	new file:   surveysnap-frontend/src/data/templates.js
+#	modified:   surveysnap-frontend/src/index.css
+#	modified:   surveysnap-frontend/src/main.jsx
+#	modified:   surveysnap-frontend/src/pages/FillSurvey.jsx
+#	modified:   surveysnap-frontend/src/pages/Home.jsx
+#	modified:   surveysnap-frontend/src/pages/TemplateDetails.jsx
+#	new file:   surveysnap-frontend/src/pages/Templates.jsx
+#	modified:   surveysnap-frontend/src/pages/admin/AdminDashboard.jsx
+#	modified:   surveysnap-frontend/src/pages/admin/ManageSurveys.jsx
+#	modified:   surveysnap-frontend/src/pages/admin/ManageUsers.jsx
+#	modified:   surveysnap-frontend/src/pages/auth/Login.jsx
+#	modified:   surveysnap-frontend/src/pages/auth/Signup.jsx
+#	modified:   surveysnap-frontend/src/pages/respondent/TakeSurvey.jsx
+#	modified:   surveysnap-frontend/src/pages/user/CreateSurvey.jsx
+#	modified:   surveysnap-frontend/src/pages/user/Dashboard.jsx
+#	modified:   surveysnap-frontend/src/pages/user/SurveyAnalytics.jsx
+#	modified:   surveysnap-frontend/src/pages/user/ViewSurvey.jsx
+#	modified:   surveysnap-frontend/src/routes/AppRoutes.jsx
+#
+# Changes not staged for commit:
+#	modified:   surveysnap-frontend/package-lock.json
+#	modified:   surveysnap-frontend/package.json
+#	modified:   surveysnap-frontend/src/Component/layout/AdminLayout.jsx
+#	modified:   surveysnap-frontend/src/Component/user/UserNavbar.jsx
+#	modified:   surveysnap-frontend/src/data/templates.js
+#	modified:   surveysnap-frontend/src/pages/Home.jsx
+#	modified:   surveysnap-frontend/src/pages/admin/AdminDashboard.jsx
+#	modified:   surveysnap-frontend/src/pages/admin/ManageSurveys.jsx
+#	modified:   surveysnap-frontend/src/pages/admin/ManageUsers.jsx
+#	modified:   surveysnap-frontend/src/pages/auth/Login.jsx
+#	modified:   surveysnap-frontend/src/pages/auth/Signup.jsx
+#	modified:   surveysnap-frontend/src/pages/respondent/TakeSurvey.jsx
+#	modified:   surveysnap-frontend/src/pages/user/CreateSurvey.jsx
+#	modified:   surveysnap-frontend/src/pages/user/Dashboard.jsx
+#	modified:   surveysnap-frontend/src/pages/user/SurveyAnalytics.jsx
+#	modified:   surveysnap-frontend/src/pages/user/ViewSurvey.jsx
+#	modified:   surveysnap-frontend/src/routes/AppRoutes.jsx
+#	modified:   surveysnap-frontend/vite.config.js
+#
+# Untracked files:
+#	surveysnap-frontend/.env
+#	surveysnap-frontend/src/Component/admin/AdminGuard.jsx
+#	surveysnap-frontend/src/config.js
+#	surveysnap-frontend/src/pages/ContactUs.jsx
+#	surveysnap-frontend/src/pages/admin/AdminLogin.jsx
+#	surveysnap-frontend/src/pages/auth/ForgotPassword.jsx
+#	surveysnap-frontend/src/pages/auth/SetupProfile.jsx
+#
