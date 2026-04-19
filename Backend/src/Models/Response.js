@@ -1,31 +1,16 @@
-import mongoose from "mongoose";
+const mongoose = require("mongoose");
 
-const responseSchema = new mongoose.Schema(
-{
-    survey:{
-        type:mongoose.Schema.Types.ObjectId,
-        ref:"Survey"
-    },
-
-    respondentEmail:{
-        type:String
-    },
-
-    answers:[
+// Response model - survey ka ID aur answers store karta hai
+// respondentEmail optional hai (anonymous bhi ho sakta hai)
+const responseSchema = new mongoose.Schema({
+    survey: { type: mongoose.Schema.Types.ObjectId, ref: "Survey", required: true },
+    respondentEmail: { type: String, default: "" },
+    answers: [
         {
-            question:{
-                type:mongoose.Schema.Types.ObjectId,
-                ref:"Question"
-            },
-
-            answer:{
-                type:String
-            }
+            questionIndex: Number,  // question ka index
+            answer: String          // selected/typed answer
         }
     ]
+}, { timestamps: true });
 
-},
-{timestamps:true}
-);
-
-export default mongoose.model("Response",responseSchema);
+module.exports = mongoose.model("Response", responseSchema);

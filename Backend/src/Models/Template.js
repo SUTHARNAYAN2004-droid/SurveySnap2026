@@ -17,7 +17,12 @@ const templateSchema = new mongoose.Schema(
             questionType:String,
             options:[String]
         }
-    ]
+    ],
+
+    imageUrl:{
+        type:String,
+        default:null
+    }
 
 },
 {timestamps:true}
