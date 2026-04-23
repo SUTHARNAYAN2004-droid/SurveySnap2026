@@ -8,6 +8,7 @@
 
 import { useState } from "react";
 import axios from "axios";
+import BASE_URL from "../config";
 
 export default function ContactUs() {
   const [formData, setFormData] = useState({ name: "", email: "", message: "" });
@@ -24,7 +25,7 @@ export default function ContactUs() {
     e.preventDefault();
     setLoading(true);
     try {
-      await axios.post("http://10.169.7.128:5000/api/contact", formData);
+      await axios.post(`${BASE_URL}/api/contact`, formData);
       setSuccess(true);
       setFormData({ name: "", email: "", message: "" });
     } catch (err) {

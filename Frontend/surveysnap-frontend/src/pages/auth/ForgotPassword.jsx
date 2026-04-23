@@ -25,7 +25,7 @@ export default function ForgotPassword() {
     e.preventDefault();
     setLoading(true); setError("");
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/forgot-password", { email });
+      const res = await axios.post(`${BASE_URL}/api/auth/forgot-password`, { email });
       if (res.data.otp) setDemoOtp(res.data.otp);
       setStep(2);
     } catch (err) {
@@ -38,7 +38,7 @@ export default function ForgotPassword() {
     e.preventDefault();
     setLoading(true); setError("");
     try {
-      await axios.post("http://localhost:5000/api/auth/verify-otp", { email, otp });
+      await axios.post(`${BASE_URL}/api/auth/verify-otp`, { email, otp });
       setStep(3);
     } catch (err) {
       setError(err.response?.data?.message || "Invalid OTP");
@@ -51,7 +51,7 @@ export default function ForgotPassword() {
     if (newPassword !== confirmPassword) { setError("Passwords do not match"); return; }
     setLoading(true); setError("");
     try {
-      await axios.post("http://localhost:5000/api/auth/reset-password", { email, otp, newPassword });
+      await axios.post(`${BASE_URL}/api/auth/reset-password`, { email, otp, newPassword });
       navigate("/login");
     } catch (err) {
       setError(err.response?.data?.message || "Reset failed");

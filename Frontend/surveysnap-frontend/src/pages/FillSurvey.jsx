@@ -3,6 +3,7 @@
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
+import BASE_URL from "../config";
 
 export default function FillSurvey() {
   // URL se survey ID lo (e.g. /fill-survey/abc123)
@@ -13,7 +14,7 @@ export default function FillSurvey() {
 
   // Component mount hone par survey data fetch karo
   useEffect(() => {
-    axios.get("http://localhost:5000/api/survey/" + id)
+    axios.get(`${BASE_URL}/api/survey/` + id)
       .then((res) => setSurvey(res.data))
       .catch((err) => console.error("Survey fetch error:", err));
   }, []);
@@ -21,7 +22,7 @@ export default function FillSurvey() {
   // Survey submit karo - saare answers backend pe bhejo
   const submit = async () => {
     try {
-      await axios.post("http://localhost:5000/api/response/submit", {
+      await axios.post(`${BASE_URL}/api/response/submit`, {
         surveyId: id,
         answers,
       });

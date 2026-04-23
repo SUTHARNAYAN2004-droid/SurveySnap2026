@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
+import BASE_URL from "../../config";
 
 const ManageSurveys = () => {
   const [surveys, setSurveys] = useState([]);
@@ -8,7 +9,7 @@ const ManageSurveys = () => {
   const fetchSurveys = async () => {
     try {
       setLoading(true);
-      const res = await axios.get("http://localhost:5000/api/surveys/all");
+      const res = await axios.get(`${BASE_URL}/api/surveys/all`);
       setSurveys(res.data);
     } catch (err) {
       console.error("Fetch Error:", err);
@@ -20,7 +21,7 @@ const ManageSurveys = () => {
   const deleteSurvey = async (id) => {
     if (!window.confirm("Delete this survey?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/surveys/${id}`);
+      await axios.delete(`${BASE_URL}/api/surveys/${id}`);
       fetchSurveys();
     } catch (err) {
       alert("Delete failed!");
@@ -29,7 +30,7 @@ const ManageSurveys = () => {
 
   const toggleStatus = async (id) => {
     try {
-      const res = await axios.put(`http://localhost:5000/api/surveys/${id}/toggle-status`);
+      const res = await axios.put(`${BASE_URL}/api/surveys/${id}/toggle-status`);
       setSurveys(surveys.map(s => s._id === id ? { ...s, status: res.data.status } : s));
     } catch (err) {
       alert("Status update failed!");

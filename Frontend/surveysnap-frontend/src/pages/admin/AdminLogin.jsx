@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../config";
 
 // Admin login page - role "admin" check hota hai backend pe
 // Success pe adminUser + adminToken localStorage mein save hota hai
@@ -20,7 +21,7 @@ export default function AdminLogin() {
     e.preventDefault();
     setLoading(true);
     try {
-      const res = await axios.post("http://localhost:5000/api/admin/login", formData);
+      const res = await axios.post(`${BASE_URL}/api/admin/login`, formData);
       localStorage.setItem("adminUser", JSON.stringify(res.data.user));
       localStorage.setItem("adminToken", "true");
       navigate("/admin");

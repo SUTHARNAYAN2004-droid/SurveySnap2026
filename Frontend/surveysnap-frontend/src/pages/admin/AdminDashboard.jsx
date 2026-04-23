@@ -9,6 +9,7 @@
 
 import { useEffect, useState } from "react";
 import axios from "axios";
+import BASE_URL from "../../config";
 
 const AdminDashboard = () => {
   const [stats, setStats] = useState({ totalUsers: 0, totalSurveys: 0, totalResponses: 0 });
@@ -16,7 +17,7 @@ const AdminDashboard = () => {
 
   // Backend se stats fetch karo - /api/admin/stats
   useEffect(() => {
-    axios.get("http://localhost:5000/api/admin/stats")
+    axios.get(`${BASE_URL}/api/admin/stats`)
       .then(res => setStats(res.data))
       .catch(err => console.error(err))
       .finally(() => setLoading(false));

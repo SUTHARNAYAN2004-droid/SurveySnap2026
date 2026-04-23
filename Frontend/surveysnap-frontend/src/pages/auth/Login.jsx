@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../../config";
 
 // Login page - show/hide password added, login ke baad /CreateSurvey pe redirect
 export default function Login() {
@@ -15,7 +16,7 @@ export default function Login() {
 
   const onSubmit = async (data) => {
     try {
-      const res = await axios.post("http://localhost:5000/api/users/login", data);
+      const res = await axios.post(`${BASE_URL}/api/users/login`, data);
       const user = res.data.user;
       localStorage.setItem("user", JSON.stringify(user));
 

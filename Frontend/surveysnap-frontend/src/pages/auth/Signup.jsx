@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate, Link } from "react-router-dom";
+import BASE_URL from "../../config";
 
 // Signup page:
 // - name split into firstName/lastName for backend
@@ -34,7 +35,7 @@ export default function Signup() {
         setLoading(false);
         return;
       }
-      const res = await axios.post("http://10.169.7.128:5000/api/users/register", formData);
+      const res = await axios.post(`${BASE_URL}/api/users/register`, formData);
       setNewUser(res.data.data);
       localStorage.setItem("user", JSON.stringify(res.data.data));
       setShowModal(true);
@@ -58,7 +59,7 @@ export default function Signup() {
     try {
       const fd = new FormData();
       fd.append("profilePic", file);
-      await axios.put(`http://localhost:5000/api/users/${newUser._id}/profile-pic`, fd);
+      await axios.put(`${BASE_URL}/api/users/${newUser._id}/profile-pic`, fd);
       navigate("/login");
     } catch (err) {
       alert("Upload failed. Try again.");

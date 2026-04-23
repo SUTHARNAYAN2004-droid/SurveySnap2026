@@ -1,6 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import BASE_URL from "../../config";
 
 export default function SetupProfile() {
   const navigate = useNavigate();
@@ -22,7 +23,7 @@ export default function SetupProfile() {
     try {
       const formData = new FormData();
       formData.append("profilePic", file);
-      const res = await axios.put(`http://localhost:5000/api/users/${user._id}/profile-pic`, formData);
+      const res = await axios.put(`${BASE_URL}/api/users/${user._id}/profile-pic`, formData);
       const updatedUser = { ...user, profilePic: res.data.profilePic };
       localStorage.setItem("user", JSON.stringify(updatedUser));
       navigate("/user/surveys");

@@ -10,6 +10,7 @@
 import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../../config";
 
 export default function Dashboard() {
   const navigate = useNavigate();
@@ -23,7 +24,7 @@ export default function Dashboard() {
   // Backend se is user ke saare surveys fetch karo
   const fetchSurveys = () => {
     if (!userId) return;
-    axios.get(`http://localhost:5000/api/surveys/creator/${userId}`)
+    axios.get(`${BASE_URL}/api/surveys/creator/${userId}`)
       .then(res => setSurveys(res.data))
       .catch(err => console.error(err))
       .finally(() => setLoading(false));
@@ -35,7 +36,7 @@ export default function Dashboard() {
   const deleteSurvey = async (id) => {
     if (!window.confirm("Delete this survey?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/surveys/${id}`);
+      await axios.delete(`${BASE_URL}/api/surveys/${id}`);
       setSurveys(surveys.filter(s => s._id !== id)); // UI se bhi hata do
     } catch (err) {
       alert("Failed to delete survey.");
@@ -46,7 +47,7 @@ export default function Dashboard() {
   const handleDeleteAccount = async () => {
     if (!window.confirm("Are you sure? This cannot be undone.")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/users/${userId}`);
+      await axios.delete(`${BASE_URL}/api/users/${userId}`);
       localStorage.clear();
       navigate("/signup");
     } catch (err) {

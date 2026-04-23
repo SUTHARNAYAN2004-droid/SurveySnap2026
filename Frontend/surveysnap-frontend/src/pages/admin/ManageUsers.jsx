@@ -10,6 +10,7 @@
 
 import { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import BASE_URL from "../../config";
 
 const ManageUsers = () => {
   const [users, setUsers] = useState([]);
@@ -20,7 +21,7 @@ const ManageUsers = () => {
 
   // Backend se saare users fetch karo
   const fetchUsers = () => {
-    axios.get("http://localhost:5000/api/users")
+    axios.get(`${BASE_URL}/api/users`)
       .then(res => setUsers(res.data))
       .catch(err => console.error(err))
       .finally(() => setLoading(false));
@@ -32,7 +33,7 @@ const ManageUsers = () => {
   const handleDelete = async (id) => {
     if (!window.confirm("Are you sure you want to delete this user?")) return;
     try {
-      await axios.delete(`http://localhost:5000/api/users/${id}`);
+      await axios.delete(`${BASE_URL}/api/users/${id}`);
       setUsers(users.filter(u => u._id !== id)); // UI se bhi hata do
     } catch (err) {
       alert("Failed to delete user");
@@ -44,7 +45,7 @@ const ManageUsers = () => {
     const formData = new FormData();
     formData.append("profilePic", file);
     try {
-      const res = await axios.put(`http://localhost:5000/api/users/${id}/profile-pic`, formData);
+      const res = await axios.put(`${BASE_URL}/api/users/${id}/profile-pic`, formData);
       // UI mein bhi update karo
       setUsers(users.map(u => u._id === id ? { ...u, profilePic: res.data.profilePic } : u));
     } catch (err) {

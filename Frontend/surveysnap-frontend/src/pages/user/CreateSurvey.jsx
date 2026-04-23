@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { QRCodeCanvas } from "qrcode.react";
 import axios from "axios";
+import BASE_URL from "../../config";
 
 // Teen answer types support kiye hain
 const QUESTION_TYPES = [
@@ -108,7 +109,7 @@ export default function CreateSurvey() {
     if (!shareEmail) return alert("Enter an email address");
     setEmailSending(true);
     try {
-      await axios.post("http://10.169.7.128:5000/api/surveys/share-email", {
+      await axios.post(`${BASE_URL}/api/surveys/share-email`, {
         email: shareEmail,
         surveyLink: shareLink,
         surveyTitle: savedSurveyTitle
@@ -141,13 +142,14 @@ export default function CreateSurvey() {
     };
 
     try {
-      const res = await fetch("http://10.169.7.128:5000/api/surveys/create", {
+      const res = await fetch(`${BASE_URL}/api/surveys/create`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(surveyData)
       });
       const saved = await res.json();
-      const link = `${window.location.origin}/survey/${saved._id}`;
+      const frontendUrl = import.meta.env.VITE_FRONTEND_URL || window.location.origin;
+      const link = `${frontendUrl}/survey/${saved._id}`;
       setShareLink(link);
       setSavedSurveyTitle(surveyName);
     } catch (err) {

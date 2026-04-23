@@ -4,6 +4,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
+import BASE_URL from "../../config";
 
 export default function TakeSurvey() {
   const { id } = useParams();
@@ -15,7 +16,7 @@ export default function TakeSurvey() {
   const [email, setEmail] = useState("");
 
   useEffect(() => {
-    axios.get(`http://10.169.7.128:5000/api/surveys/${id}`)
+    axios.get(`${BASE_URL}/api/surveys/${id}`)
       .then(res => { setSurvey(res.data); setLoading(false); })
       .catch(() => { setError("Survey not found."); setLoading(false); });
   }, [id]);
@@ -31,7 +32,7 @@ export default function TakeSurvey() {
       answer: String(answer)
     }));
     try {
-      await axios.post("http://10.169.7.128:5000/api/surveys/response", {
+      await axios.post(`${BASE_URL}/api/surveys/response`, {
         surveyId: id,
         respondentEmail: email,
         answers: formattedAnswers
